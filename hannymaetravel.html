@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hannymae Traveling Adventures</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('bg 111.jpg') repeat;
+            background-size: cover;
+            color: #fbfffe; /* Set text color to white */
+            
+        }
+        @keyframes moveBackground {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: 100% 100%;
+            }
+        }
+        header {
+            background: linear-gradient(#0097b2, #7ed957);
+            color: #fff;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 1s ease-in-out;
+        }
+        @keyframes slideDown {
+            from {
+                top: -100px;
+            }
+            to {
+                top: 0;
+            }
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+        footer {
+            background: linear-gradient(#0097b2, #7ed957);
+            color: #fff;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000;
+            font-size: 1em;
+            animation: slideUp 1s ease-in-out;
+        }
+        @keyframes slideUp {
+            from {
+                bottom: -100px;
+            }
+            to {
+                bottom: 0;
+            }
+        }
+        section {
+            padding: 100px 20px;
+            display: none;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        #home {
+            display: block;
+            padding-top: 150px;
+            animation: zoomIn 1s ease-in-out;
+        }
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.5);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn:hover {
+            background-color: #444;
+            transform: scale(1.1);
+        }
+        h1 {
+            text-alignment: center;
+            text-transform: uppercase;
+            font-size: 3.em; /* Increased font size */
+            letter-spacing: 0.05em;
+            margin: 50px 0; /* Added margin for spacing */
+            margin-top: 50px; /* Increased font size */
+
+
+            animation: moveBackground 30s linear infinite;
+        }
+        .intro-text {
+            font-size: 2.8em; /* Increased font size */
+            margin-top: 10px; /* Added margin for spacing */
+        }
+        .about-text {
+            font-size: 1.2em;
+            text-align: left; /* Align text to the left */
+            padding-left: 20px; /* Add padding to the left */
+            line-height: 1.6; /* Increased line height for better readability */
+        }
+        .blog-text {
+            font-size: 1.2em;
+        }
+        .contact-text {
+            font-size: 1.5em;
+            text-align: center;
+        }
+        .contact-text p {
+            margin-top: 5px;
+        }
+        .content-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .content-wrapper img {
+            max-width: 40%;
+            height: auto;
+            margin-left: -20px; /* Move the image slightly to the left */
+            filter: drop-shadow(0 0 40px rgba(255, 255, 255, 1));
+            animation: shine 2s infinite alternate;
+        }
+        @keyframes shine {
+            from {
+                filter: drop-shadow(0 0 40px rgba(255, 255, 255, 1));
+            }
+            to {
+                filter: drop-shadow(0 0 60px rgba(255, 255, 255, 1));
+            }
+        }
+        .content-wrapper .text-content {
+            flex: 1;
+            padding-left: 20px;
+        }
+        .about-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .about-wrapper img {
+            max-width: 200px; /* Set the width of both images to be the same */
+            height: auto;
+            margin: 10px 0; /* Ensure the images have a bit of spacing */
+            filter: drop-shadow(0 0 40px rgba(255, 255, 255, 1));
+            animation: slideUp 1s ease-in-out;
+        }
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .slideshow-container {
+            max-width: 100%;
+            position: relative;
+            margin: auto;
+        }
+        .mySlides {
+            display: none;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+        
+</style>
+<style>
+    /* Add these styles to adjust the size of the images in my travel vlog image */     
+    
+   .about-image {
+        max-width: 20%; /* Set the maximum width of the images to 20% of their container */
+        height: auto; /* Automatically adjust the height based on the width */
+        margin: 10px 0; /* Add some margin for spacing between images */
+    }
+    #home img {
+    max-width: 35%; /* Adjust the maximum width as per your preference */
+    height: auto; /* Automatically adjust the height based on the width */
+}
+
+
+
+</style>
+ 
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home" onclick="showSection('home')">Home</a></li>
+                <li><a href="#about" onclick="showSection('about')">About Me</a></li>
+                <li><a href="#blog" onclick="showSection('blog')">Travel Blog</a></li>
+                <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="home">
+        <div class="content-wrapper">
+            <img src="bg 15.png" alt="Hannymae">
+            <div class="text-content">
+                <h1 style="font-size: 2.0em;">Welcome to my traveling adventures!</h1>
+           </div>
+    </section>
+    <section id="about">
+        
+            <div class="text-content">            
+            <image alignment: center>            
+               <p class="about-text">
+                  Hello, I'm Hannymae, and I am 21 years old. I'm the youngest and only daughter in my family. During my free time or vacations, I love exploring various places here on my side but I'm not fond of traveling alone, I prefer having my family around for bonding. As the youngest and only daughter, I cherish every moment spent with my loved ones, especially during our exciting travel escapades. I believe that the best journeys are those shared with family, where every experience becomes a treasured memory.
+                  My hobbies include reading books, painting, and drawing.
+                </p>
+            </div>
+            <div class="image-content">
+                <img src="HANNY 3.png" alt="Hannymae" class="about-image">
+                <img src="HANNY 2.jpg" alt="Hannymae" class="about-image">
+                <img src="hg 1.jpg" alt="Hannymae" class="about-image">
+                <img src="hg 2.jpg" alt="Hannymae" class="about-image">
+                
+         </div>
+        </div>
+    </section>
+    <section id="blog">
+        <article>
+        
+        <p class="blog-text">
+             This is my recent travel adventure in Banuangan and this is a place that located in Barangay Malasay, Katipunan, Zamboanga del Norte. It is a corner situated in Purok 7,that is not frequently visited by many people because it is far and not yet known as a tourist spot destination.
+             Typically, the people living here are members of the indigenous people called Subanen, also known as Subanon, referring to a native group in the Zamboanga Peninsula area.In Banuangan, you can find unique tranquility and beauty of nature that brings peace to the residents there, and of course, to you as well. Banuangan also offers expansive views of wide fields mountains and falls that provide breathtaking sights.
+        </p>
+       </article>
+       
+       <div class="image-content">
+            <img src="my hanny.jpg" alt="Hannymae" class="about-image">
+            <img src="bg 1.jpg" alt="Hannymae" class="about-image">
+            <img src="bg 3.jpeg" alt="Hannymae" class="about-image">
+            <img src="bg 4.jpeg" alt="Hannymae" class="about-image">
+            <img src="bg 143.jpeg" alt="Hannymae" class="about-image">           
+            <img src="bg 6.jpeg" alt="Hannymae" class="about-image">
+
+
+   </section>
+    <section id="contact">
+        <div class="contact-text">
+            
+            <p>If you have any questions or comments, feel free to reach out to me!</p>
+            <p>Email: <a href="mailto:galtachannymae543@gmail.com">galtachannymae543@gmail.com</a></p>
+            <p>Facebook Account: <a href="https://www.facebook.com/HannymaeGaltac" target="_blank">Hannymae Galtac</a></p>
+
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Hannymae Website</p>
+    </footer>
+    <script>
+        function showSection(sectionId) {
+            var sections = document.querySelectorAll('section');
+            sections.forEach(function (section) {
+                section.style.display = 'none';
+            });
+            var targetSection = document.getElementById(sectionId);
+            targetSection.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
